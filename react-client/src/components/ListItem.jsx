@@ -1,9 +1,29 @@
 import React from 'react';
 
-const ListItem = (props) => (
-  <div>
-    { props.item.name }
-  </div>
-)
+class ListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    }
+    this.clickFav = this.clickFav.bind(this);
+  }
+
+  clickFav() {
+    console.log('hello in list item');
+    this.props.favorite();
+  }
+
+  render(){
+    return (
+      <div>
+        <button>{ this.props.item.name }</button> <button onClick={this.clickFav}>FAV</button>
+      </div>
+    )
+  }
+}
 
 export default ListItem;
+
+
+// onClick={this.props.favorite}

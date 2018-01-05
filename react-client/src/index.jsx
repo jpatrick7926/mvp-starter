@@ -4,6 +4,8 @@ import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/search.jsx';
 import playerData from '../../mock.js';
+// import probasketball from 'probasketball-api';
+
 // console.log(playerData.players);
 
 
@@ -11,14 +13,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: playerData.players
+      items: playerData.players,
+      favorites: []
     }
     this.onSearch = this.onSearch.bind(this);
     this.makeMessage = this.makeMessage.bind(this);
+    this.onFavorite = this.onFavorite.bind(this);
   }
 
   componentDidMount() {
-    console.log('this is the problem');
+    // console.log('this is the problem');
     // $.ajax({
     //   url: '/items',
     //   success: (data) => {
@@ -40,11 +44,21 @@ class App extends React.Component {
     // offset={offset-specifier} (filter results starting at the given offset)
     // limit={limit-specifier} (limit the maximum # of results)
     // force={force-if-not-modified} (force content)
+    $.ajax({
+      url: 'http:api.probasketballapi.com/teams',
+      method: 'POST',
+      contentType: 'application/json',
+      data: 'WxzV8Iv5QJ1RqYAanGsFTdkou4fU9SNl',
+      success: () => {
+        console.log('hello in post, SUCCESSSSSS');
+      }
+    })
 
 //WxzV8Iv5QJ1RqYAanGsFTdkou4fU9SNl
     $.ajax({
       type: 'GET',
       url: 'http:api.probasketballapi.com/player',
+      api_key: 'WxzV8Iv5QJ1RqYAanGsFTdkou4fU9SNl',
       player:'stephen curry',
       limit: 5,
       success: (data) => {
@@ -75,11 +89,15 @@ class App extends React.Component {
     })
   }
 
+  onFavorite(){
+    console.log('hello');
+  }
+
 
   render () {
     return (<div>
       <h1>MY NBA PLAYERS</h1>
-      <List items={this.state.items}/>
+      <List items={this.state.items} favClick={this.onFavorite}/>
       <Search searchInitialized={this.onSearch}/>
 
     </div>)
