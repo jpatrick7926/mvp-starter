@@ -6,10 +6,20 @@ class Search extends React.Component {
     this.state = {
       name: ''
     }
+    this.onChange = this.onChange.bind(this);
+    this.search = this.search.bind(this);
   }
 
+  onChange(e) {
+    this.setState({
+      name: e.target.value
+    })
+  }
 
-
+  search() {
+    console.log('hello in search function in search', this.state.name);
+    this.props.searchInitialized(this.state.name);
+  }
 
 
 
@@ -17,8 +27,8 @@ class Search extends React.Component {
     return(
       <div>
         <h3>Search for your NBA Players!</h3>
-        Search Players: <input value = {this.state.name}/>
-        <button>GO!</button>
+        Search Players: <input onChange={this.onChange}/>
+        <button onClick={this.search}>GO!</button>
       </div>
     )
   }
