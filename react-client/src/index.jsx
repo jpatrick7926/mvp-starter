@@ -5,7 +5,6 @@ import List from './components/List.jsx';
 import Search from './components/search.jsx';
 import FavoriteList from './components/favoritesList.jsx';
 import playerData from '../../mock.js';
-// import probasketball from 'probasketball-api';
 
 // console.log(playerData.players);
 

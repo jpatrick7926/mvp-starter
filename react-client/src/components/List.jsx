@@ -18,11 +18,13 @@ class List extends React.Component {
   render() {
     return (
       <div>
-        <h4> List Component </h4>
-        There are { this.props.items.length } items.
+        <h3> Player Search </h3>
+        <h5>Documenting { this.props.items.length } Players.</h5>
+        ---------------------------------------------------------
 
         {console.log(this.props.items)}
         { this.props.items.map((item) => <ListItem item={item} favorite={this.onFav}/>)}
+        ---------------------------------------------------------
       </div>
     )
   }

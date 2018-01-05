@@ -5,8 +5,10 @@ class ListItem extends React.Component {
     super(props);
     this.state = {
       player: this.props.item,
+      stats: 'click to show stats',
     }
     this.clickFav = this.clickFav.bind(this);
+    this.showStats = this.showStats.bind(this);
   }
 
   clickFav() {
@@ -14,10 +16,17 @@ class ListItem extends React.Component {
     this.props.favorite(this.props.item);
   }
 
+  showStats(){
+    this.setState({
+      stats: this.props.item.stats
+    })
+  }
+
   render(){
     return (
       <div>
-        <button>{ this.props.item.name }</button> <button onClick={this.clickFav}>FAV</button>
+        {this.state.player.name}
+        <button onClick={this.showStats}>{this.state.stats}</button> <button onClick={this.clickFav}>FAV</button>
       </div>
     )
   }
