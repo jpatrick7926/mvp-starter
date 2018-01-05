@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
 import Search from './components/search.jsx';
+import FavoriteList from './components/favoritesList.jsx';
 import playerData from '../../mock.js';
 // import probasketball from 'probasketball-api';
 
@@ -89,8 +90,11 @@ class App extends React.Component {
     })
   }
 
-  onFavorite(){
+  onFavorite(player){
     console.log('hello');
+    this.setState({
+      favorites: this.state.favorites.concat(player),
+    })
   }
 
 
@@ -99,6 +103,7 @@ class App extends React.Component {
       <h1>MY NBA PLAYERS</h1>
       <List items={this.state.items} favClick={this.onFavorite}/>
       <Search searchInitialized={this.onSearch}/>
+      <FavoriteList favs={this.state.favorites}/>
 
     </div>)
   }

@@ -4,14 +4,14 @@ class ListItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
+      player: this.props.item,
     }
     this.clickFav = this.clickFav.bind(this);
   }
 
   clickFav() {
     console.log('hello in list item');
-    this.props.favorite();
+    this.props.favorite(this.props.item);
   }
 
   render(){

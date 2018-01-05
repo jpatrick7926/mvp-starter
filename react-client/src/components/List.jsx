@@ -10,9 +10,9 @@ class List extends React.Component {
     this.onFav = this.onFav.bind(this);
   }
 
-  onFav() {
+  onFav(player) {
     console.log('hello in List');
-    this.props.favClick();
+    this.props.favClick(player);
   }
 
   render() {
